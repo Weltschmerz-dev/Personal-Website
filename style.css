@@ -1,0 +1,445 @@
+:root {
+    --background: #272727;
+    --secondary: #1d4ed8;
+    /* TailwindCSS SKY COLLOR PALETTE */
+    --sky-50: #f0f9ff;
+    --sky-100: #e0f2fe;
+    --sky-200: #bae6fd;
+    --sky-300: #7dd3fc;
+    --sky-400: #38bdf8;
+    --sky-500: #0ea5e9;
+    --sky-600: #0284c7;
+    --sky-700: #0369a1;
+    --sky-800: #075985;
+    --sky-900: #0c4a6e;
+    --sky-950: #082f49;
+    --font: sans-serif;
+}
+* {
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+li {
+    list-style: none;
+    font-size: 24px;
+}
+li a {
+    text-decoration: none;
+}
+body {
+    background-color: var(--background);
+}
+header {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    left: 0px;
+    height: 90px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+footer p {
+    font-size: 24px;
+}
+
+.selected-header-item {
+    color: var(--sky-300)
+}
+
+.header-items {
+    height: 100%;
+    width: 50%;
+    transform: translate(50%, 0);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#home-section {
+    height: calc(100vh - 90px); /* Full height minus the header's height */
+    position: relative; /* To ensure absolute positioning works relative to this section */
+}
+#about-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-top: 100px;
+}
+#experience-section {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.home-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the element perfectly */
+    text-align: center; /* Keep the text centered */
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button path {
+    transition: 0.3s;
+}
+
+.button:hover path {
+    stroke-width: 20px;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.title-name {
+    color: var(--sky-500)
+}
+
+.secondary-color {
+    color: var(--sky-300);
+}
+.welcome-header-text {
+    font-size: 128px;
+    
+}
+.welcome-subheader-text {
+    font-size: 36px;
+}
+.welcome-icons {
+    padding-top: 20px;
+    word-spacing: 30px;
+}
+.content-box {
+    width: 80%;
+    /* max-width: 1000px; Set your desired max width */
+    margin: 0 auto; /* This will center the element */
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    border-radius: 50px;
+}
+
+.content-box h1 {
+    font-size: 36px;
+    padding-bottom: 20px;
+}
+
+.content-box p {
+    font-size: 24px;
+}
+
+
+
+.project-box img {
+    width: 230px;
+    min-height: 170px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.project-box h2 {
+    margin-top: 10px;
+}
+
+.project-box a {
+    margin: 10px auto;
+    width: 80%;
+    height: 44px;
+    display: flex;
+    background-color: var(--background);
+    align-items: center;
+    border-radius: 15px;
+    border: none;
+    gap: 10px;
+    font-size: 24px;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.project-box p {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.project-box {
+    border-radius: 15px;
+    width: 250px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+.small-box {
+    background-color: var(--sky-900);
+    height: 314px;
+}
+
+.big-box {
+    outline: 5px var(--sky-900) solid;
+    min-height: 384px;
+}
+
+.secondary-horizontal-linebreak {
+    border: 3px var(--sky-900) solid;
+    width: 60%;
+    margin: 10px auto;
+    margin-bottom: 10px;
+}
+
+.secondary-vertical-linebreak {
+    border: 2px var(--secondary) solid;
+    width: 1px;
+    height: 100px;
+}
+
+.project-carousel {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.flipped-chevron {
+    transform: rotate(180deg);
+}
+
+
+
+/* Timeline Container */
+.timeline {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Card container */
+.card {
+position: relative;
+max-width: 50%;
+}
+
+/* setting padding based on even or odd */
+.card:nth-child(odd) {
+padding: 30px 0 30px 30px;
+}
+.card:nth-child(even) {
+padding: 30px 30px 30px 0;
+}
+/* Global ::before */
+.card::before {
+content: "";
+position: absolute;
+width: 50%;
+border: solid var(--sky-900);
+}
+
+/* Setting the border of top, bottom, left */
+.card:nth-child(odd)::before {
+left: 0px;
+top: -5px;
+bottom: -4.5px;
+border-width: 5px 0 5px 5px;
+border-radius: 50px 0 0 50px;
+z-index: -1;
+}
+
+/* Setting the top and bottom to "-5px" because earlier it was out of a pixel in mobile devices */
+@media only screen and (max-width: 400px) {
+.card:nth-child(odd)::before {
+    top: -5px;
+    bottom: -5px;
+}
+}
+
+/* Setting the border of top, bottom, right */
+.card:nth-child(even)::before {
+right: 0;
+top: 0;
+bottom: 0;
+border-width: 5px 5px 5px 0;
+border-radius: 0 50px 50px 0;
+z-index: -1;
+}
+
+/* Removing the border if it is the first card */
+.card:first-child::before {
+border-top: 0;
+border-top-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's odd */
+.card:last-child:nth-child(odd)::before {
+border-bottom: 0;
+border-bottom-left-radius: 0;
+}
+
+/* Removing the border if it is the last card  and it's even */
+.card:last-child:nth-child(even)::before {
+border-bottom: 0;
+border-bottom-right-radius: 0;
+}
+
+/* Information about the timeline */
+.info {
+display: flex;
+flex-direction: column;
+background: var(--background);
+color: var(--background);
+border-radius: 10px;
+padding: 10px;
+}
+
+/* Title of the card */
+.title {
+color: var(--sky-200);
+position: relative;
+}
+
+/* Timeline dot  */
+.title::before {
+content: "";
+position: absolute;
+width: 10px;
+height: 10px;
+background: white;
+border-radius: 999px;
+border: 3px solid var(--sky-500);
+}
+
+.date {
+    content: "";
+    position: absolute;
+    top: 36px
+}
+
+
+
+/* text right if the card is even  */
+.card:nth-child(even) > .info > .title {
+text-align: center;
+}
+
+/* setting dot to the left if the card is odd */
+.card:nth-child(odd) > .info > .title::before {
+left: -45px;
+}
+
+/* setting dot to the left if the card is odd */
+.card:nth-child(odd) > .info > .date {
+left: -20%;
+}
+/* setting dot to the left if the card is odd */
+.card:nth-child(even) > .info > .date {
+right: -20%;
+}
+
+/* setting dot to the right if the card is odd */
+.card:nth-child(even) > .info > .title::before {
+right: -45px;
+}
+
+.card:first-child > .info > .title::before {
+    animation: current-experience-pulsing 2.5s infinite;
+}
+
+@keyframes current-experience-pulsing {
+    0% {
+        background: #ffffff;
+    }
+    50% {
+        background: var(--sky-500);
+    }
+    100% {
+        background: #ffffff;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .card:nth-child(odd) > .info > .date {
+        left: -30%;
+    }
+    .card:nth-child(even) > .info > .date {
+        right: -30%;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    .card:nth-child(odd) > .info > .date {
+        left: -40%;
+    }
+    .card:nth-child(even) > .info > .date {
+        right: -40%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .card:nth-child(odd) > .info > .date {
+        left: -50%;
+    }
+    .card:nth-child(even) > .info > .date {
+        right: -50%;
+    }
+}
+
+
+#mouse-scroll {margin:auto;left:50%;-webkit-transform:translateX(-50%);z-index:9999;}
+#mouse-scroll span {display:block;width:10px;height:10px;-ms-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg);border-right:2px solid var(--sky-800);border-bottom:2px solid var(--sky-800);margin:0 0 6px 10px}
+#mouse-scroll .unu {margin-top:12px}
+#mouse-scroll .unu, #mouse-scroll .doi, #mouse-scroll .trei {-webkit-animation:mouse-scroll 1s infinite;-moz-animation:mouse-scroll 1s infinite}
+#mouse-scroll .unu {-webkit-animation-delay:.1s;-moz-animation-delay:.1s;-webkit-animation-direction:alternate}
+#mouse-scroll .doi {-webkit-animation-delay:.2s;-moz-animation-delay:.2s;-webkit-animation-direction:alternate}
+#mouse-scroll .trei {-webkit-animation-delay:.3s;-moz-animation-delay:.3s;-webkit-animation-direction:alternate}
+#mouse-scroll .mouse {height:42px;width:28px;border-radius:20px;-webkit-transform:none;-ms-transform:none;transform:none;border:4px solid var(--sky-500);top:170px}
+#mouse-scroll .wheel {height:10px;width:4px;display:block;margin:5px auto;background:var(--sky-500);position:relative}
+#mouse-scroll .wheel {-webkit-animation:mouse-wheel 1.2s ease infinite;-moz-animation:mouse-wheel 1.2s ease infinite}
+
+
+@-webkit-keyframes mouse-wheel {
+    0% {opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
+    100% {opacity:0;-webkit-transform:translateY(12px);-ms-transform:translateY(12px);transform:translateY(12px)}
+}
+@-webkit-keyframes mouse-scroll {
+    0% {opacity:0}
+    50% {opacity:.5}
+    100% {opacity:1}
+}
+@keyframes mouse-scroll {
+    0% {opacity:0}
+    50% {opacity:.5}
+    100% {opacity:1}
+}
+
+.header-item {
+    transition: 0.3s;
+}
+
+.header-item:hover {
+    color: var(--sky-300);
+    text-shadow: 0px 0px 20px var(--sky-300);
+}
