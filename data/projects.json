@@ -20,5 +20,21 @@
         "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
         "cta_icon": "github",
         "cta_text": "GitHub"
+    },
+    {
+        "title": "This Website #4",
+        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
+        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "cta_icon": "github",
+        "cta_text": "GitHub"
+    },
+    {
+        "title": "This Website #5",
+        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
+        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "cta_icon": "github",
+        "cta_text": "GitHub"
     }
 ]

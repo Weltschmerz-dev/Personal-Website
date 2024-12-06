@@ -2,7 +2,7 @@ window.onload = function() {
     toggleHeaderSelected(window.location.hash);
     loadHeaderFunctionality();
     loadData();
-    loadCarouselFunctionality();
+    loadCarousel();
 };
 
 
@@ -68,7 +68,7 @@ async function loadProjects() {
 
                 case "project-card-href":
                     selectedItem.href = project["cta_url"]
-                    // Generate SCG and inject as child width/height = 24
+                    // Generate SVG and inject as child width/height = 24
                     break;
 
                 case "project-card-button-text":
@@ -78,10 +78,33 @@ async function loadProjects() {
             }
         }
         projectContainer.appendChild(newProjectElement)
-        projectContainer.appendChild(<div class="secondary-vertical-linebreak"></div>)
+        const linebreakDiv = document.createElement("div")
+        linebreakDiv.classList.add("secondary-vertical-linebreak")
+        linebreakDiv.hidden = true
+        projectContainer.appendChild(linebreakDiv)
     }
 
+    configureProjectVisibility()
 
+
+}
+
+function configureProjectVisibility() {
+    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
+    if (projectsAndLinebreaks.length % 2 == 0) {
+        midPoint -= 1;
+    }
+    projectsAndLinebreaks[midPoint].hidden = false
+    projectsAndLinebreaks[midPoint].classList.add("big-box")
+    for (let i = 1; i < 3; i++) {
+        projectsAndLinebreaks[midPoint + i].hidden = false
+        projectsAndLinebreaks[midPoint - i].hidden = false        
+        if (i === 2) {
+            projectsAndLinebreaks[midPoint - i].classList.add("small-box")
+            projectsAndLinebreaks[midPoint + i].classList.add("small-box")
+        }
+    }
 }
    
 
@@ -128,7 +151,11 @@ async function fetchJsonFromFile(path) {
     }
 }
 
-function loadCarouselFunctionality() {
+function loadCarousel() {
+    configureCarouselButtons()
+}
+
+function configureCarouselButtons() {
     const carouselButtons = document.querySelectorAll(".button")
     carouselButtons.forEach((carouselButton) => {
         carouselButton.addEventListener('click', (event) => carouselButtonsEventListener(carouselButton))
@@ -137,36 +164,52 @@ function loadCarouselFunctionality() {
 
 function carouselButtonsEventListener(carouselButton) {
     if (carouselButton.id == "button-previous") {
-        console.log("previous thingy please")
         loadPreviousProject()
     } else {
-        console.log("Next thingy please")
         loadNextProject()
     }
 }
 
-function loadPreviousProject() {
-    const projectBoxes = document.querySelectorAll(".project-box")
-    let classnames = []
-    projectBoxes.forEach((projectBox) => {
-        classnames.push(projectBox.classList.value)
-    })
-    // shift the classnames by -1
-    classnames = classnames.concat(classnames.splice(0,1))
-    projectBoxes.forEach((projectBox, index) => {
-        projectBox.className = classnames[index]
-    })
+function loadNextProject() {
+    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    projectContainer = document.querySelector("#projects-container")
+    let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
+    if (projectsAndLinebreaks.length % 2 == 0) {
+        midPoint -= 1;
+    }
+    projectsAndLinebreaks[midPoint].classList.remove("big-box")
+    projectsAndLinebreaks[midPoint].classList.add("small-box")
+    projectsAndLinebreaks[midPoint-2].hidden = true
+    projectsAndLinebreaks[midPoint-1].hidden = true
+    projectsAndLinebreaks[midPoint + 2].classList.add("big-box")
+    projectsAndLinebreaks[midPoint + 2].classList.remove("small-box")
+    projectsAndLinebreaks[midPoint + 3].hidden = false
+    projectsAndLinebreaks[midPoint + 4].hidden = false
+    projectsAndLinebreaks[midPoint + 4].classList.add("small-box")
+    projectsAndLinebreaks[midPoint - 4].remove()
+    projectsAndLinebreaks[midPoint - 3].remove()
+    projectContainer.appendChild(projectsAndLinebreaks[midPoint - 4])
+    projectContainer.appendChild(projectsAndLinebreaks[midPoint - 3])
 }
 
-function loadNextProject() {
-    const projectBoxes = document.querySelectorAll(".project-box")
-    let classnames = []
-    projectBoxes.forEach((projectBox) => {
-        classnames.push(projectBox.classList.value)
-    })
-    // shift the classnames by -1
-    classnames = classnames.concat(classnames.splice(0,classnames.length - 1))
-    projectBoxes.forEach((projectBox, index) => {
-        projectBox.className = classnames[index]
-    })
+function loadPreviousProject() {
+    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    projectContainer = document.querySelector("#projects-container")
+    let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
+    if (projectsAndLinebreaks.length % 2 == 0) {
+        midPoint -= 1;
+    }
+    projectsAndLinebreaks[midPoint].classList.remove("big-box")
+    projectsAndLinebreaks[midPoint].classList.add("small-box")
+    projectsAndLinebreaks[midPoint+2].hidden = true
+    projectsAndLinebreaks[midPoint+1].hidden = true
+    projectsAndLinebreaks[midPoint - 2].classList.add("big-box")
+    projectsAndLinebreaks[midPoint - 2].classList.remove("small-box")
+    projectsAndLinebreaks[midPoint - 4].classList.add("small-box")
+    projectsAndLinebreaks[midPoint + 4].remove()
+    projectsAndLinebreaks[midPoint + 3].remove()
+    projectContainer.insertBefore(projectsAndLinebreaks[midPoint + 3], projectContainer.childNodes[0])
+    projectContainer.insertBefore(projectsAndLinebreaks[midPoint + 4], projectContainer.childNodes[0])
+    projectsAndLinebreaks[midPoint - 3].hidden = false
+    projectsAndLinebreaks[midPoint - 4].hidden = false
 }

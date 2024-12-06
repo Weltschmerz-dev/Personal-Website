@@ -190,9 +190,14 @@ footer p {
     font-size: 16px;
 }
 
+
 .small-box {
     background-color: var(--sky-900);
     height: 314px;
+}
+
+.small-box #project-card-description {
+    font-size: 0px;
 }
 
 .big-box {
@@ -214,6 +219,13 @@ footer p {
 }
 
 .project-carousel {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.projects-container {
     display: flex;
     gap: 20px;
     justify-content: center;
