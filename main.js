@@ -42,7 +42,7 @@ async function loadData() {
 }
 
 async function loadProjects() {
-    projectsObject = await fetchJsonFromFile("/data/projects.json")
+    projectsObject = await fetchJsonFromFile("./data/projects.json")
     projectTemplate = document.querySelector("#project-card-template")
     projectContainer = document.querySelector("#projects-container")
     newProjectElements = []
@@ -109,7 +109,7 @@ function configureProjectVisibility() {
    
 
 async function loadExperiences() {
-    experiencesObject = await fetchJsonFromFile("/data/experiences.json")
+    experiencesObject = await fetchJsonFromFile("./data/experiences.json")
     experienceTemplate = document.querySelector("#experience-card-template")
     experienceContainer = document.querySelector("#experiences-container")
 
