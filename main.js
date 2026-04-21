@@ -124,27 +124,76 @@ async function loadExperiences() {
     const experienceContainer = document.querySelector("#experiences-container")
 
     for (let experience of experiencesObject) {
-        const newExperienceElement = experienceTemplate.cloneNode(true);
+        const newExperienceElement = experienceTemplate.cloneNode(true)
         newExperienceElement.id = ""
         newExperienceElement.hidden = false
         newExperienceElement.className = "card"
-        newExperienceElement.childNodes.forEach((i) => {
-            // Check if the childNode is a div
-            if (i.nodeName == "DIV") {
-                i.childNodes.forEach((childNode) => {
-                    if (childNode.nodeName == "P") {
-                        childNode.textContent = experience["description"]
-                    } else if (childNode.nodeName == "H3") {
-                        if (childNode.classList.contains("title")) {
-                            childNode.textContent = experience["title"]
-                        } else if (childNode.classList.contains("date")) {
-                            childNode.textContent = experience["date"]
-                        }
-                    }
-                })
-            }
-        })
+
+        const titleElement = newExperienceElement.querySelector(".title")
+        const dateElement = newExperienceElement.querySelector(".date")
+        const descriptionElement = newExperienceElement.querySelector(".experience-description")
+
+        titleElement.textContent = experience["title"] || ""
+        dateElement.textContent = experience["date"] || ""
+        renderExperienceDescription(descriptionElement, experience["description"] || "")
+
         experienceContainer.appendChild(newExperienceElement)
+    }
+}
+
+function renderExperienceDescription(containerElement, descriptionText) {
+    containerElement.replaceChildren()
+
+    const blocks = String(descriptionText)
+        .split(/\n\s*\n/g)
+        .map((block) => block.trim())
+        .filter((block) => block.length > 0)
+
+    for (const block of blocks) {
+        const lines = block
+            .split(/\r?\n/)
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0)
+
+        if (lines.length === 0) {
+            continue
+        }
+
+        const bulletItems = []
+        let currentBulletItem = null
+        let canBeBulletBlock = true
+
+        for (const line of lines) {
+            const bulletMatch = line.match(/^(?:[•*-]\s+)(.*)$/)
+            if (bulletMatch) {
+                if (currentBulletItem !== null) {
+                    bulletItems.push(currentBulletItem)
+                }
+                currentBulletItem = bulletMatch[1].trim()
+            } else if (currentBulletItem !== null) {
+                // Treat wrapped lines as continuation of the current bullet item.
+                currentBulletItem = `${currentBulletItem} ${line}`
+            } else {
+                canBeBulletBlock = false
+                break
+            }
+        }
+
+        if (canBeBulletBlock && currentBulletItem !== null) {
+            bulletItems.push(currentBulletItem)
+            const listElement = document.createElement("ul")
+            for (const bulletItem of bulletItems) {
+                const listItemElement = document.createElement("li")
+                listItemElement.textContent = bulletItem
+                listElement.appendChild(listItemElement)
+            }
+            containerElement.appendChild(listElement)
+            continue
+        }
+
+        const paragraphElement = document.createElement("p")
+        paragraphElement.textContent = lines.join(" ")
+        containerElement.appendChild(paragraphElement)
     }
 }
 

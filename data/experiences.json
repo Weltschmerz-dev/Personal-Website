@@ -1,27 +1,27 @@
 [
     {
-        "title": "Software & Data Warehouse Engineer",
+        "title": "Software & Data Warehouse Engineer @ e-power",
         "date": "2023 - current",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
-        "title": "Software & Data Warehouse Engineer #2",
-        "date": "2023 - 2024",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "title": "Front-End Engineer @ PreSend",
+        "date": "2023 - 2023",
+        "description": "During my time as a front end engineer at PreSend my most notable accomplishments were:\n\n• Led the redesign of an existing browser extension, effectively translating Figma designs into a functional user interface.\n\n• Extended the application's reach by creating a website version of the extension, ensuring consistency in design and user experience across platforms.\n\n• Learned and implemented multiple new SDKs, often in environments lacking specific documentation, demonstrating my ability to adapt quickly and effectively.\n\n• Contributed to enhancing the safety of ERC20 transactions for users by integrating the extension with traditional wallets such as MetaMask, thereby adding a security layer to transactions.\n\n• Collaborated closely with the back-end team, implementing custom SDKs and ensuring seamless integration with the front-end.\n\nAlthough my primary role was focused on front-end development, I gained invaluable insights into the intersection of design, user experience, and blockchain technologies. This role required strong problem-solving skills, an eye for design, and a deep understanding of blockchain technologies. Despite the challenges, it was a rewarding experience that significantly broadened my skill set in the field of web3 technologies."
     },
     {
-        "title": "Software & Data Warehouse Engineer #3",
-        "date": "2023 - 2024",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "title": "Smart Contract & Full-Stack Engineer @ CollectiVerse",
+        "date": "2022 - 2023",
+        "description": "As a Smart Contract Developer and Full-Stack Developer, I was responsible for developing a smart contract that is used by every customer of the company. This contract is a key feature of the project.\n\nIn addition to my smart contract development responsibilities, I worked closely with a team to design the company website. Together, we created 3D objects of asteroids with full 3D functionality such as zoom, rotate, etc. This feature was appreciated by customers as it made it easier to understand the asteroids' composition.\n\nI have also helped out my team with generating the 3d objects of asteroids by writing and updating existing scripts. These would automate most of the tasks that would otherwise take up days of time.\n\nTo create these 3D models, I had to work with multiple APIs and parse their data to gather the most accurate information possible about the asteroids' size, elements it's made of, and the percentage of each element. This required me to have a deep understanding of various APIs and how to extract the data that we needed.\n\nOverall, I enjoyed my role as a Smart Contract Developer and Full-Stack Developer, and I believe that my experience in this position has helped me develop critical skills in blockchain technology and website design, as well as the ability to work collaboratively in a team environment."
     },
     {
-        "title": "Software & Data Warehouse Engineer #4",
-        "date": "2023 - 2024",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "title": "Full-Stack Engineer @ Gosu Tools",
+        "date": "2022 - 2023",
+        "description": "Gosu Tools is an NFT Trading Analytics Tool that offers a publicly available dashboard for traders and a unique custom trading bot.\n\nDuring my time here some of my most notable accomplishments were:\n\n• Led the development of a complex browser extension for NFT trading, utilizing Python for back-end operations and React for the front-end user interface.\n\n•Successfully integrated multiple APIs and SDKs, overcoming challenges posed by minimal or non-existent documentation, demonstrating exceptional problem-solving skills and adaptability.\n\n• Leveraged in-depth knowledge of web3 and blockchain technologies to inform the development of cutting-edge solutions.\n\n• Despite not launching, the project provided invaluable insights into product development, troubleshooting, and the emerging field of NFT trading."
     },
     {
-        "title": "Software & Data Warehouse Engineer #5",
-        "date": "2023 - 2024",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "title": "Freelance Back-End Developer",
+        "date": "2018 - 2022",
+        "description": "As a Freelance Developer for four years, I was frequently challenged to utilize my creativity and problem-solving skills. I worked on an extensive array of projects, which included browser automation, web scraping, and crafting sophisticated chatbots for platforms such as Discord, Telegram, and Messenger. These projects often necessitated innovative, out-of-the-box thinking to deliver efficient, high-performing, and user-friendly applications. My ability to tackle complex challenges head-on and come up with novel solutions was instrumental to my success in this role.\n\nDuring my time as a freelance developer my most notable accomplishments were:\n\n• Creating an entire store front within a chat bot utilizing SQL Databases and REST-api's.\n\n• Creating an automated digital marketing tool.\n\n• Automating hundreds of annoying and tedious daily tasks, both offline (excel, ...) and online (Webscraping, REST api's, ...)\n\n• Mentor other new freelance developers\n\n• Pair programming with people from all around the world"
     }
 ]
