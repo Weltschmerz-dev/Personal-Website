@@ -1,15 +1,29 @@
-window.onload = function() {
-    toggleHeaderSelected(window.location.hash);
-    loadHeaderFunctionality();
-    loadData();
-    loadCarousel();
-};
+function safeInit(stepName, initFn) {
+    try {
+        initFn()
+    } catch (error) {
+        console.error(`Initialization failed: ${stepName}`, error)
+    }
+}
+
+function initializePage() {
+    safeInit("header-selected-state", () => toggleHeaderSelected(window.location.hash))
+    safeInit("header-functionality", loadHeaderFunctionality)
+    safeInit("data-loading", loadData)
+    safeInit("carousel", loadCarousel)
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage)
+} else {
+    initializePage()
+}
 
 
 function loadHeaderFunctionality() {
-    headerElements = document.querySelectorAll(".header-items a")
+    const headerElements = document.querySelectorAll(".header-items a")
     headerElements.forEach((headerElement) => {
-        headerElement.addEventListener("click", (event) => {
+        headerElement.addEventListener("click", () => {
             headerElements.forEach((headerElement) => {
                 headerElement.classList.remove("selected-header-item")
             })
@@ -25,7 +39,6 @@ function toggleHeaderSelected(section) {
             break;
         
         case "#about-section":
-            console.log(document.querySelector("[href='#about-section']"))
             document.querySelector("[href='#about-section']").classList.add("selected-header-item")
             break;
         
@@ -36,21 +49,18 @@ function toggleHeaderSelected(section) {
 }
 
 async function loadData() {
-    
-    loadExperiences()
-    loadProjects()
+    await Promise.all([loadExperiences(), loadProjects()])
 }
 
 async function loadProjects() {
-    projectsObject = await fetchJsonFromFile("./data/projects.json")
-    projectTemplate = document.querySelector("#project-card-template")
-    projectContainer = document.querySelector("#projects-container")
-    newProjectElements = []
+    const projectsObject = await fetchJsonFromFile("./data/projects.json")
+    const projectTemplate = document.querySelector("#project-card-template")
+    const projectContainer = document.querySelector("#projects-container")
 
     for (let project of projectsObject) {
-        newProjectElement = projectTemplate.cloneNode(true);
+        const newProjectElement = projectTemplate.cloneNode(true);
         newProjectElement.id = ""
-        selector = newProjectElement.querySelectorAll("#project-card-image, #project-card-title, #project-card-description, #project-card-href, #project-card-button-text")
+        const selector = newProjectElement.querySelectorAll("#project-card-image, #project-card-title, #project-card-description, #project-card-href, #project-card-button-text")
         for (let selectedItem of selector) {
             switch (selectedItem["id"]) {
                 case "project-card-image":
@@ -59,11 +69,11 @@ async function loadProjects() {
                     break;
 
                 case "project-card-title":
-                    selectedItem.innerHTML = project["title"]
+                    selectedItem.textContent = project["title"]
                     break;
                     
                 case "project-card-description":
-                    selectedItem.innerHTML = project["description"]
+                    selectedItem.textContent = project["description"]
                     break;
 
                 case "project-card-href":
@@ -72,7 +82,7 @@ async function loadProjects() {
                     break;
 
                 case "project-card-button-text":
-                    selectedItem.innerHTML = project["cta_text"]
+                    selectedItem.textContent = project["cta_text"]
                     break;
 
             }
@@ -90,7 +100,7 @@ async function loadProjects() {
 }
 
 function configureProjectVisibility() {
-    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    const projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
     let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
     if (projectsAndLinebreaks.length % 2 == 0) {
         midPoint -= 1;
@@ -109,12 +119,12 @@ function configureProjectVisibility() {
    
 
 async function loadExperiences() {
-    experiencesObject = await fetchJsonFromFile("./data/experiences.json")
-    experienceTemplate = document.querySelector("#experience-card-template")
-    experienceContainer = document.querySelector("#experiences-container")
+    const experiencesObject = await fetchJsonFromFile("./data/experiences.json")
+    const experienceTemplate = document.querySelector("#experience-card-template")
+    const experienceContainer = document.querySelector("#experiences-container")
 
     for (let experience of experiencesObject) {
-        newExperienceElement = experienceTemplate.cloneNode(true);
+        const newExperienceElement = experienceTemplate.cloneNode(true);
         newExperienceElement.id = ""
         newExperienceElement.hidden = false
         newExperienceElement.className = "card"
@@ -123,12 +133,12 @@ async function loadExperiences() {
             if (i.nodeName == "DIV") {
                 i.childNodes.forEach((childNode) => {
                     if (childNode.nodeName == "P") {
-                        childNode.innerHTML = experience["description"]
+                        childNode.textContent = experience["description"]
                     } else if (childNode.nodeName == "H3") {
-                        if (childNode.classList == "title") {
-                            childNode.innerHTML = experience["title"]
-                        } else if (childNode.classList == "date") {
-                            childNode.innerHTML = experience["date"]
+                        if (childNode.classList.contains("title")) {
+                            childNode.textContent = experience["title"]
+                        } else if (childNode.classList.contains("date")) {
+                            childNode.textContent = experience["date"]
                         }
                     }
                 })
@@ -158,7 +168,7 @@ function loadCarousel() {
 function configureCarouselButtons() {
     const carouselButtons = document.querySelectorAll(".button")
     carouselButtons.forEach((carouselButton) => {
-        carouselButton.addEventListener('click', (event) => carouselButtonsEventListener(carouselButton))
+        carouselButton.addEventListener('click', () => carouselButtonsEventListener(carouselButton))
     })
 }
 
@@ -171,8 +181,8 @@ function carouselButtonsEventListener(carouselButton) {
 }
 
 function loadNextProject() {
-    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
-    projectContainer = document.querySelector("#projects-container")
+    const projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    const projectContainer = document.querySelector("#projects-container")
     let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
     if (projectsAndLinebreaks.length % 2 == 0) {
         midPoint -= 1;
@@ -193,8 +203,8 @@ function loadNextProject() {
 }
 
 function loadPreviousProject() {
-    projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
-    projectContainer = document.querySelector("#projects-container")
+    const projectsAndLinebreaks = document.querySelectorAll("#projects-container li, #projects-container .secondary-vertical-linebreak")
+    const projectContainer = document.querySelector("#projects-container")
     let midPoint = Math.floor(projectsAndLinebreaks.length / 2);
     if (projectsAndLinebreaks.length % 2 == 0) {
         midPoint -= 1;

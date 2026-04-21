@@ -87,8 +87,9 @@ footer p {
 .home-element {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center the element perfectly */
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
     text-align: center; /* Keep the text centered */
 }
 
@@ -113,7 +114,32 @@ footer p {
 }
 
 .title-name {
-    color: var(--sky-500)
+    color: var(--sky-500);
+    display: block;
+    position: relative;
+    height: 1.1em;
+    width: 16ch;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.title-name-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: inherit;
+    white-space: nowrap;
+    line-height: inherit;
+}
+
+.title-name-caret {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--sky-300);
+    animation: caret-blink 1s steps(1, end) infinite;
+    pointer-events: none;
 }
 
 .secondary-color {
@@ -121,7 +147,11 @@ footer p {
 }
 .welcome-header-text {
     font-size: 128px;
-    
+    line-height: 1.05;
+}
+
+.welcome-header-text p {
+    line-height: 1.05;
 }
 .welcome-subheader-text {
     font-size: 36px;
@@ -389,6 +419,18 @@ right: -45px;
     }
     100% {
         background: #ffffff;
+    }
+}
+
+@keyframes caret-blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 
