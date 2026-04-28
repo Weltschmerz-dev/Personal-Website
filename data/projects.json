@@ -1,37 +1,44 @@
 [
     {
+        "title": "WIP",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
+        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "cta_icon": "github",
+        "cta_text": "GitHub"
+    },
+    {
+        "title": "WIP",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
+        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "cta_icon": "github",
+        "cta_text": "GitHub"
+    },
+    {
         "title": "This Website",
-        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_icon": "github",
-        "cta_text": "GitHub"
-    },
-    {
-        "title": "This Website #2",
-        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_icon": "github",
-        "cta_text": "GitHub"
-    },
-    {
-        "title": "This Website #3",
-        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
         "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
         "cta_icon": "github",
         "cta_text": "GitHub"
     },
     {
-        "title": "This Website #4",
-        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
+        "title": "WIP",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
         "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
         "cta_icon": "github",
         "cta_text": "GitHub"
     },
     {
-        "title": "This Website #5",
-        "thumbnail_url": "https://i.wel.tz/Figma_rV1n3iiBkT.png",
+        "title": "WIP",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
         "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
         "cta_icon": "github",

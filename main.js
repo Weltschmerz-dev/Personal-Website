@@ -64,8 +64,7 @@ async function loadProjects() {
         for (let selectedItem of selector) {
             switch (selectedItem["id"]) {
                 case "project-card-image":
-                    selectedItem.src = project["thumbnail_url"]
-                    selectedItem.alt = project["title"]
+                    configureProjectThumbnail(selectedItem, project)
                     break;
 
                 case "project-card-title":
@@ -77,7 +76,7 @@ async function loadProjects() {
                     break;
 
                 case "project-card-href":
-                    selectedItem.href = project["cta_url"]
+                    selectedItem.href = project["cta_url"] || "#"
                     // Generate SVG and inject as child width/height = 24
                     break;
 
@@ -97,6 +96,62 @@ async function loadProjects() {
     configureProjectVisibility()
 
 
+}
+
+function configureProjectThumbnail(imageElement, project) {
+    const cacheBustToken = isLocalDevelopmentHost() ? String(Date.now()) : ""
+    const avifSource = appendDevCacheBust(String(project["thumbnail_avif"] || "").trim(), cacheBustToken)
+    const webpSource = appendDevCacheBust(String(project["thumbnail_webp"] || "").trim(), cacheBustToken)
+    const fallbackSource = appendDevCacheBust(String(project["thumbnail_url"] || "").trim(), cacheBustToken)
+
+    imageElement.alt = project["title"] || ""
+    imageElement.loading = "lazy"
+    imageElement.decoding = "async"
+
+    if (!avifSource && !webpSource) {
+        imageElement.src = fallbackSource
+        return
+    }
+
+    const imageParentElement = imageElement.parentElement
+    if (!imageParentElement) {
+        imageElement.src = fallbackSource || webpSource || avifSource
+        return
+    }
+
+    const pictureElement = document.createElement("picture")
+    pictureElement.classList.add("project-picture")
+
+    if (avifSource) {
+        const avifElement = document.createElement("source")
+        avifElement.srcset = avifSource
+        avifElement.type = "image/avif"
+        pictureElement.appendChild(avifElement)
+    }
+
+    if (webpSource) {
+        const webpElement = document.createElement("source")
+        webpElement.srcset = webpSource
+        webpElement.type = "image/webp"
+        pictureElement.appendChild(webpElement)
+    }
+
+    imageElement.src = fallbackSource || webpSource || avifSource
+    imageParentElement.replaceChild(pictureElement, imageElement)
+    pictureElement.appendChild(imageElement)
+}
+
+function appendDevCacheBust(assetUrl, cacheBustToken) {
+    if (!assetUrl || !cacheBustToken || /^https?:\/\//i.test(assetUrl)) {
+        return assetUrl
+    }
+
+    const joinChar = assetUrl.includes("?") ? "&" : "?"
+    return `${assetUrl}${joinChar}devcb=${encodeURIComponent(cacheBustToken)}`
+}
+
+function isLocalDevelopmentHost() {
+    return window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost" || window.location.hostname === "::1"
 }
 
 function configureProjectVisibility() {
@@ -221,7 +276,8 @@ function appendInlineExperienceFormatting(targetElement, rawText) {
 
 async function fetchJsonFromFile(path) {
     try {
-        const response = await fetch(path);
+        const requestOptions = isLocalDevelopmentHost() ? { cache: "no-store" } : undefined
+        const response = await fetch(path, requestOptions);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -272,10 +328,20 @@ function animateCarouselShift(direction) {
     if (!projectContainer) {
         return
     }
+    const projectsBox = projectContainer.closest(".my-projects")
 
     const itemsBeforeUpdate = getCarouselItems()
     if (itemsBeforeUpdate.length < 5) {
         return
+    }
+
+    const lockedProjectContainerHeight = Math.ceil(projectContainer.getBoundingClientRect().height)
+    projectContainer.style.height = `${lockedProjectContainerHeight}px`
+    projectContainer.style.minHeight = `${lockedProjectContainerHeight}px`
+
+    if (projectsBox) {
+        const lockedProjectsBoxHeight = Math.ceil(projectsBox.getBoundingClientRect().height)
+        projectsBox.style.minHeight = `${lockedProjectsBoxHeight}px`
     }
 
     const previousVisibleRects = new Map()
@@ -402,6 +468,11 @@ function animateCarouselShift(direction) {
     const finishAnimation = () => {
         isCarouselAnimating = false
         projectContainer.classList.remove("carousel-animating")
+        projectContainer.style.height = ""
+        projectContainer.style.minHeight = ""
+        if (projectsBox) {
+            projectsBox.style.minHeight = ""
+        }
     }
 
     if (animations.length === 0) {

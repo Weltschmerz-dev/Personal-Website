@@ -208,6 +208,10 @@ footer p {
     padding-right: 10px;
 }
 
+.project-picture {
+    display: block;
+}
+
 .project-box h2 {
     margin-top: 10px;
 }
