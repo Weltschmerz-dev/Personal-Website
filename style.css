@@ -1,4 +1,5 @@
 :root {
+    --header-height: 90px;
     --background: #272727;
     --secondary: #1d4ed8;
     /* TailwindCSS SKY COLLOR PALETTE */
@@ -31,15 +32,20 @@ li a {
 }
 body {
     background-color: var(--background);
+    overflow-x: hidden;
 }
 header {
     position: fixed;
     z-index: 100;
     top: 0;
     left: 0px;
-    height: 90px;
+    height: var(--header-height);
     width: 100%;
     background-color: rgba(0, 0, 0, 0.1);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 footer {
@@ -66,15 +72,23 @@ footer p {
     align-items: center;
 }
 #home-section {
-    height: calc(100vh - 90px); /* Full height minus the header's height */
+    min-height: calc(100svh - var(--header-height));
     position: relative; /* To ensure absolute positioning works relative to this section */
 }
 #about-section {
-    height: 100vh;
+    min-height: 100svh;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 36px;
     padding-top: 100px;
+    padding-bottom: 64px;
+}
+
+#about-section > .content-box {
+    flex: 0 0 auto;
 }
 #experience-section {
     display: flex;
@@ -182,6 +196,7 @@ footer p {
 
 .section {
     margin-bottom: 28px;         /* replaces <br> */
+    scroll-margin-top: calc(var(--header-height) + 12px);
 }
 
 
@@ -539,7 +554,7 @@ right: -45px;
 }
 
 
-#mouse-scroll {margin:auto;left:50%;-webkit-transform:translateX(-50%);z-index:9999;}
+#mouse-scroll {margin:auto;left:50%;-webkit-transform:translateX(-50%);z-index:20;}
 #mouse-scroll span {display:block;width:10px;height:10px;-ms-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg);border-right:2px solid var(--sky-800);border-bottom:2px solid var(--sky-800);margin:0 0 6px 10px}
 #mouse-scroll .unu {margin-top:12px}
 #mouse-scroll .unu, #mouse-scroll .doi, #mouse-scroll .trei {-webkit-animation:mouse-scroll 1s infinite;-moz-animation:mouse-scroll 1s infinite}
@@ -573,4 +588,364 @@ right: -45px;
 .header-item:hover {
     color: var(--sky-300);
     text-shadow: 0px 0px 20px var(--sky-300);
+}
+
+@media only screen and (max-width: 1200px) {
+    .header-items {
+        width: min(88%, 900px);
+        transform: none;
+        margin: 0 auto;
+    }
+
+    .welcome-header-text {
+        font-size: clamp(72px, 9vw, 110px);
+    }
+
+    .welcome-subheader-text {
+        font-size: clamp(24px, 3.2vw, 32px);
+    }
+
+    .content-box {
+        width: min(90%, 1100px);
+    }
+
+    .card {
+        max-width: 72%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    :root {
+        --header-height: 72px;
+    }
+
+    header {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background-color: rgba(18, 18, 18, 0.92);
+        border-bottom: 1px solid rgba(125, 211, 252, 0.22);
+    }
+
+    .header-items {
+        width: 100%;
+        padding: 0 18px;
+        justify-content: space-between;
+    }
+
+    .header-items li {
+        font-size: 20px;
+    }
+
+    #home-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .home-element {
+        position: static;
+        transform: none;
+        padding: 0 20px;
+    }
+
+    .welcome-header-text {
+        font-size: clamp(48px, 13vw, 78px);
+    }
+
+    .welcome-subheader-text {
+        font-size: clamp(18px, 4.8vw, 24px);
+        line-height: 1.4;
+    }
+
+    .welcome-icons {
+        padding-top: 18px;
+        word-spacing: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .welcome-icons svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .scroll-button {
+        display: block;
+    }
+
+    #mouse-scroll.scroll-button {
+        position: absolute;
+        top: auto;
+        bottom: max(14px, env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0.85;
+    }
+
+    #about-section {
+        justify-content: flex-start;
+        gap: 24px;
+        padding-top: 32px;
+        padding-bottom: 40px;
+    }
+
+    #experience-section {
+        gap: 56px;
+        padding-top: 36px;
+        padding-bottom: 56px;
+    }
+
+    .content-box {
+        width: min(92%, 760px);
+        border-radius: 26px;
+        padding: 20px;
+    }
+
+    .content-box h1 {
+        font-size: 32px;
+    }
+
+    .content-box p {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .project-carousel {
+        gap: 10px;
+    }
+
+    .project-carousel > .button {
+        width: 76px;
+        height: 76px;
+        flex: 0 0 76px;
+    }
+
+    .projects-container {
+        gap: 12px;
+        min-height: 352px;
+    }
+
+    .project-box {
+        width: min(74vw, 320px);
+    }
+
+    .project-box img {
+        width: calc(100% - 20px);
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+    }
+
+    .project-box h2 {
+        font-size: 24px;
+    }
+
+    .project-box a {
+        height: 42px;
+        font-size: 19px;
+    }
+
+    .small-box {
+        min-height: 284px;
+    }
+
+    .big-box {
+        min-height: 352px;
+    }
+
+    #project-card-description {
+        max-height: 120px;
+    }
+
+    .secondary-vertical-linebreak {
+        height: 76px;
+    }
+
+    .timeline {
+        padding: 12px 4px;
+    }
+
+    .card {
+        max-width: 86%;
+    }
+
+    .date {
+        font-size: 18px;
+    }
+
+    footer p {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    :root {
+        --header-height: 64px;
+    }
+
+    .header-items {
+        padding: 0 10px;
+        justify-content: space-evenly;
+    }
+
+    .header-items li {
+        font-size: 17px;
+    }
+
+    .welcome-header-text {
+        font-size: clamp(36px, 12vw, 56px);
+    }
+
+    .welcome-subheader-text {
+        font-size: 17px;
+    }
+
+    #mouse-scroll.scroll-button {
+        bottom: max(10px, env(safe-area-inset-bottom));
+        transform: translateX(-50%) scale(0.82);
+        transform-origin: center bottom;
+        opacity: 0.72;
+    }
+
+    .content-box {
+        width: 94%;
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    #about-section {
+        gap: 18px;
+        padding-top: 24px;
+        padding-bottom: 28px;
+    }
+
+    .content-box h1 {
+        font-size: 27px;
+    }
+
+    .content-box p {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .welcome-header-text,
+    .welcome-subheader-text,
+    .about-me,
+    .my-projects,
+    #experience-section .content-box {
+        text-align: center;
+    }
+
+    .project-carousel {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .project-carousel > .button {
+        width: 56px;
+        height: 56px;
+        flex: 0 0 56px;
+    }
+
+    .projects-container {
+        min-height: 318px;
+    }
+
+    .projects-container > .small-box,
+    .projects-container > .secondary-vertical-linebreak {
+        display: none !important;
+    }
+
+    .project-box {
+        width: min(76vw, 280px);
+    }
+
+    .project-box h2 {
+        font-size: 20px;
+    }
+
+    .project-box a {
+        height: 38px;
+    }
+
+    .project-box a p {
+        font-size: 16px;
+    }
+
+    .big-box {
+        min-height: 318px;
+    }
+
+    #project-card-description {
+        max-height: 92px;
+    }
+
+    .timeline {
+        margin: 8px auto;
+        padding: 0;
+    }
+
+    .outer {
+        align-items: stretch;
+    }
+
+    .card {
+        max-width: 100%;
+        padding: 0 0 18px !important;
+    }
+
+    .card::before {
+        display: none;
+    }
+
+    .info {
+        padding: 14px;
+    }
+
+    .card:nth-child(even) > .info > .title {
+        text-align: left;
+    }
+
+    .card:nth-child(odd) > .info > .title::before,
+    .card:nth-child(even) > .info > .title::before {
+        left: -16px;
+        right: auto;
+    }
+
+    .date {
+        position: static;
+        display: block;
+        margin: 6px 0 12px;
+        color: var(--sky-300);
+        font-size: 15px;
+    }
+
+    .card:nth-child(odd) > .info > .date,
+    .card:nth-child(even) > .info > .date {
+        left: auto;
+        right: auto;
+    }
+
+    .experience-description ul {
+        padding-left: 20px;
+    }
+
+    .experience-description li {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    footer {
+        height: auto;
+        padding: 12px 12px 20px;
+        text-align: center;
+    }
+
+    footer p {
+        font-size: 16px;
+        line-height: 1.45;
+    }
 }

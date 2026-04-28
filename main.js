@@ -184,7 +184,7 @@ function renderExperienceDescription(containerElement, descriptionText) {
             const listElement = document.createElement("ul")
             for (const bulletItem of bulletItems) {
                 const listItemElement = document.createElement("li")
-                listItemElement.textContent = bulletItem
+                appendInlineExperienceFormatting(listItemElement, bulletItem)
                 listElement.appendChild(listItemElement)
             }
             containerElement.appendChild(listElement)
@@ -192,8 +192,30 @@ function renderExperienceDescription(containerElement, descriptionText) {
         }
 
         const paragraphElement = document.createElement("p")
-        paragraphElement.textContent = lines.join(" ")
+        appendInlineExperienceFormatting(paragraphElement, lines.join(" "))
         containerElement.appendChild(paragraphElement)
+    }
+}
+
+function appendInlineExperienceFormatting(targetElement, rawText) {
+    const text = String(rawText)
+    const boldPattern = /\*\*(.+?)\*\*/g
+    let match = null
+    let cursor = 0
+
+    while ((match = boldPattern.exec(text)) !== null) {
+        if (match.index > cursor) {
+            targetElement.append(document.createTextNode(text.slice(cursor, match.index)))
+        }
+
+        const strongElement = document.createElement("strong")
+        strongElement.textContent = match[1]
+        targetElement.append(strongElement)
+        cursor = boldPattern.lastIndex
+    }
+
+    if (cursor < text.length) {
+        targetElement.append(document.createTextNode(text.slice(cursor)))
     }
 }
 
