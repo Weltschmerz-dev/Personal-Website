@@ -180,6 +180,10 @@ footer p {
 }
 
 
+.section {
+    margin-bottom: 28px;         /* replaces <br> */
+}
+
 
 .project-box img {
     width: 230px;
@@ -214,20 +218,31 @@ footer p {
 }
 
 .project-box {
+    position: relative;
+    z-index: 2;
     border-radius: 15px;
     width: 250px;
     padding-top: 10px;
     font-size: 16px;
+    overflow: hidden;
+    will-change: transform;
+    transition:
+        background-color 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        outline-color 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        outline-width 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 
 .small-box {
     background-color: var(--sky-900);
-    height: 314px;
+    outline: 0px solid transparent;
+    min-height: 314px;
 }
 
 .small-box #project-card-description {
-    font-size: 0px;
+    max-height: 0;
+    opacity: 0;
 }
 
 .big-box {
@@ -243,9 +258,30 @@ footer p {
 }
 
 .secondary-vertical-linebreak {
+    position: relative;
+    z-index: 1;
     border: 2px var(--secondary) solid;
     width: 1px;
     height: 100px;
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: center;
+    will-change: transform, opacity;
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+#project-card-description {
+    max-height: 160px;
+    overflow: hidden;
+    transition:
+        max-height 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        opacity 280ms ease;
+}
+
+.big-box #project-card-description {
+    opacity: 1;
 }
 
 .project-carousel {
@@ -260,6 +296,25 @@ footer p {
     gap: 20px;
     justify-content: center;
     align-items: center;
+    min-height: 384px;
+}
+
+.projects-container.carousel-animating {
+    pointer-events: none;
+}
+
+.carousel-ghost {
+    position: fixed;
+    margin: 0;
+    pointer-events: none;
+}
+
+.carousel-ghost-card {
+    z-index: 200;
+}
+
+.carousel-ghost-divider {
+    z-index: 1;
 }
 
 .flipped-chevron {
