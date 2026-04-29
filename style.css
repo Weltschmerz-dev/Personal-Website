@@ -357,7 +357,7 @@ footer p {
 /* Card container */
 .card {
 position: relative;
-max-width: 50%;
+max-width: 70%;
 }
 
 /* setting padding based on even or odd */
