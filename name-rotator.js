@@ -50,13 +50,8 @@ function initializeTitleNameRotator() {
 
     function renderText() {
         const renderedText = currentText.length > 0 ? currentText : EMPTY_ROTATOR_TEXT
-        const textWidth = Math.ceil(measureTextWidth(textProbe, currentText))
-        const startX = Math.max(0, Math.floor((lockedTitleWidth - textWidth) / 2))
 
         titleNameTextElement.textContent = renderedText
-        titleNameTextElement.style.left = `${startX}px`
-        titleNameCaretElement.style.left = `${startX + textWidth}px`
-        titleNameCaretElement.style.transform = "none"
     }
 
     function tick() {
