@@ -110,6 +110,140 @@ footer p {
     padding-bottom: 100px;
 }
 
+.blog-page {
+    min-height: calc(100svh - var(--header-height) - 50px);
+    padding-top: calc(var(--header-height) + 48px);
+    padding-bottom: 80px;
+}
+
+.blog-index,
+.blog-post {
+    max-width: 980px;
+    text-align: left;
+}
+
+.blog-index h1,
+.blog-post h1 {
+    text-align: center;
+}
+
+.blog-list {
+    display: grid;
+    gap: 18px;
+}
+
+.blog-list-item {
+    font-size: inherit;
+}
+
+.blog-list-item a {
+    display: grid;
+    gap: 8px;
+    padding: 18px;
+    border-radius: 16px;
+    background: var(--background);
+    outline: 2px solid rgba(12, 74, 110, 0.7);
+    text-decoration: none;
+    transition: outline-color 0.3s, box-shadow 0.3s;
+}
+
+.blog-list-item a:hover {
+    outline-color: var(--sky-500);
+    box-shadow: 0 0 24px rgba(14, 165, 233, 0.22);
+}
+
+.blog-list-title {
+    color: var(--sky-200);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.blog-date {
+    color: var(--sky-300);
+    display: block;
+    font-size: 18px;
+}
+
+.blog-excerpt {
+    color: white;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.blog-back-link {
+    color: var(--sky-300);
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 24px;
+    text-decoration: none;
+}
+
+.blog-back-link:hover {
+    text-decoration: underline;
+}
+
+.blog-content {
+    font-size: 22px;
+    line-height: 1.65;
+}
+
+.blog-content h1 {
+    display: none;
+}
+
+.blog-content h2,
+.blog-content h3 {
+    color: var(--sky-200);
+    margin: 32px 0 12px;
+}
+
+.blog-content p,
+.blog-content ul,
+.blog-content ol,
+.blog-content pre,
+.blog-content blockquote {
+    margin-bottom: 18px;
+}
+
+.blog-content ul,
+.blog-content ol {
+    padding-left: 28px;
+}
+
+.blog-content li {
+    font-size: inherit;
+    line-height: inherit;
+    list-style: disc;
+    margin-bottom: 8px;
+}
+
+.blog-content ol li {
+    list-style: decimal;
+}
+
+.blog-content a {
+    color: var(--sky-300);
+}
+
+.blog-content code {
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 6px;
+    color: var(--sky-100);
+    padding: 2px 6px;
+}
+
+.blog-content pre {
+    background: var(--background);
+    border-radius: 12px;
+    overflow-x: auto;
+    padding: 16px;
+}
+
+.blog-content pre code {
+    background: transparent;
+    padding: 0;
+}
+
 .home-element {
     width: 100%;
     text-align: center; /* Keep the text centered */
