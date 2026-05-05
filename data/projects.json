@@ -53,7 +53,7 @@
         "title": "Asset Dashboard",
         "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
         "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Build during my time at e-power, this dashboard was used to monitor & service assets",
+        "description": "Built during my time at e-power, this dashboard was used to monitor & service assets",
         "cta_url": "https://weltschmerz.dev/skeleton/asset-dashboard",
         "cta_icon": "github",
         "cta_text": "W.I.P"
