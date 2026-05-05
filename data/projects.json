@@ -1,47 +1,61 @@
 [
     {
-        "title": "WIP",
+        "title": "frePPLe quote integration in Odoo",
         "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
         "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "description": "Functionality wanted by e-power, now used by every frePPLe odoo customer",
+        "cta_url": "https://weltschmerz.dev/blog/frepple_quote_functionality",
         "cta_icon": "github",
-        "cta_text": "GitHub"
+        "cta_text": "W.I.P"
     },
     {
-        "title": "WIP",
-        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
-        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "title": "Gardener",
+        "thumbnail_avif": "public/assets/projects/gardener/gardener_discord_command.avif",
+        "thumbnail_webp": "public/assets/projects/gardener/gardener_discord_command.webp",
+        "description": "Discord bot that produces info-graphics for your Hypixel Skyblock profile.",
+        "cta_url": "https://github.com/Gardeners-Bot",
         "cta_icon": "github",
         "cta_text": "GitHub"
-    },
-    {
+    },{
         "title": "This Website",
         "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
         "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
+        "description": "built using only html, ccs and js",
         "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
         "cta_icon": "github",
         "cta_text": "GitHub"
-    },
-    {
-        "title": "WIP",
+    },{
+        "title": "BOAW",
+        "thumbnail_avif": "public/assets/projects/better_odoo_api_wrapper/boaw.avif",
+        "thumbnail_webp": "public/assets/projects/better_odoo_api_wrapper/boaw.webp",
+        "description": "A odoo xmlrpc interface library",
+        "cta_url": "https://github.com/europowergenerators/BetterOdooApiWrapper",
+        "cta_icon": "github",
+        "cta_text": "GitHub"
+    },{
+        "title": "HomeLab",
         "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
         "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "description": "My HomeLab Setup",
+        "cta_url": "https://weltschmerz.dev/blog/asset-dashboard",
         "cta_icon": "github",
-        "cta_text": "GitHub"
-    },
-    {
-        "title": "WIP",
+        "cta_text": "W.I.P"
+    },{
+        "title": "HomeAssistant",
         "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
         "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun",
-        "cta_url": "https://github.com/Weltschmerz-dev/Personal-Website",
+        "description": "My HomeAssistant Story",
+        "cta_url": "https://weltschmerz.dev/blog/asset-dashboard",
         "cta_icon": "github",
-        "cta_text": "GitHub"
+        "cta_text": "W.I.P"
+    },
+    {
+        "title": "Asset Dashboard",
+        "thumbnail_avif": "public/assets/projects/this_website/project_website.avif",
+        "thumbnail_webp": "public/assets/projects/this_website/project_website.webp",
+        "description": "Build during my time at e-power, this dashboard was used to monitor & service assets",
+        "cta_url": "https://weltschmerz.dev/skeleton/asset-dashboard",
+        "cta_icon": "github",
+        "cta_text": "W.I.P"
     }
 ]
